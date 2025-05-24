@@ -19,6 +19,13 @@
           };
         in { default = pkgs.hello; });
 
+      apps = flake-utils.lib.eachDefaultSystem (system: {
+        disko = {
+          type = "app";
+          program = "${disko.packages.${system}.default}/bin/disko";
+        };
+      });
+
       nixosConfigurations = {
         sid = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -29,15 +36,7 @@
             nixos-hardware.nixosModules.common-cpu-amd
           ];
         };
-
-        joey = nixpkgs.lib.darwinSystem {
-          system =
-            "aarch64-darwin"; # Внимание: nixosSystem используется только для Linux!
-          modules = [
-            ./machines/joey/configuration.nix
-            nixos-hardware.nixosModules.apple-macbook
-          ];
-        };
       };
     };
+
 }
