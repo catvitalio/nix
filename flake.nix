@@ -22,7 +22,7 @@
       apps = flake-utils.lib.eachDefaultSystem (system: {
         disko = {
           type = "app";
-          program = "${disko.packages.${system}.default}/bin/disko";
+          program = "${disko.packages.${system}.disko}/bin/disko";
         };
       });
 
