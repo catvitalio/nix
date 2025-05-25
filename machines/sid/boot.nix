@@ -4,7 +4,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    initrd.luks.devices."crypted" = {
+    initrd.luks.devices."cryptroot" = {
       device = "/dev/disk/by-partlabel/luks";
       allowDiscards = true;
     };
