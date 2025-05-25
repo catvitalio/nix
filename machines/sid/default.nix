@@ -8,7 +8,6 @@
   networking = {
     hostName = "sid";
     networkmanager.enable = true;
-    useDHCP = true;
   };
 
   time.timeZone = "Asia/Krasnoyarsk";
