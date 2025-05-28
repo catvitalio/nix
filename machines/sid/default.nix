@@ -13,7 +13,22 @@
   time.timeZone = "Asia/Krasnoyarsk";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services = { openssh.enable = true; };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  environment.systemPackages = with pkgs; [ neovim htop curl git ];
+  services = {
+    openssh.enable = true;
+    blueman.enable = true;
+    ntp.enable = true;
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+    };
+  };
+
+  security.rtkit.enable = true;
+
+  environment.systemPackages = with pkgs; [ fish neovim htop curl git ];
 }

@@ -6,7 +6,6 @@
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     hardware.url = "github:NixOS/nixos-hardware";
     home-manager.url = "github:nix-community/home-manager/release-25.05";
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -27,6 +26,12 @@
         modules = [
           hardware.nixosModules.common-cpu-amd
           hardware.nixosModules.common-gpu-amd
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.v = import ./users/v;
+          }
           disko.nixosModules.disko
           ({ config, pkgs, ... }: {
             nixpkgs.overlays = [ (overlay-unstable "x86_64-linux") ];
