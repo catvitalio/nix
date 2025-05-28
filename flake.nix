@@ -12,7 +12,8 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, disko, hardware, ... }:
+  outputs =
+    { self, nixpkgs, nixpkgs-unstable, disko, hardware, home-manager, ... }:
     let
       overlay-unstable = system: final: prev: {
         unstable = import nixpkgs-unstable {
