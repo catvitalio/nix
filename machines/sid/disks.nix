@@ -21,7 +21,7 @@
             };
             luks = {
               size = "100%";
-              label = "luks";
+              label = "nixos";
               content = {
                 type = "luks";
                 name = "cryptroot";
@@ -44,19 +44,6 @@
                       mountOptions =
                         [ "subvol=home" "compress=zstd" "noatime" ];
                     };
-                    "/nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = [ "subvol=nix" "compress=zstd" "noatime" ];
-                    };
-                    "/persist" = {
-                      mountpoint = "/persist";
-                      mountOptions =
-                        [ "subvol=persist" "compress=zstd" "noatime" ];
-                    };
-                    "/log" = {
-                      mountpoint = "/var/log";
-                      mountOptions = [ "subvol=log" "compress=zstd" "noatime" ];
-                    };
                     "/swap" = {
                       mountpoint = "/swap";
                       swap.swapfile.size = "64G";
@@ -70,7 +57,4 @@
       };
     };
   };
-
-  fileSystems."/persist".neededForBoot = true;
-  fileSystems."/var/log".neededForBoot = true;
 }
