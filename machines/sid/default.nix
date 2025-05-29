@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./disks.nix ./boot.nix ];
+  imports = [ ./disks.nix ./boot.nix ./users.nix ];
 
   system.stateVersion = "25.05";
 

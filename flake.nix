@@ -31,7 +31,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.v = import ./users/v;
+            home-manager.users.v = import ./dots;
           }
           disko.nixosModules.disko
           ({ config, pkgs, ... }: {
