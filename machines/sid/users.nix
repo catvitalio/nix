@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 let password = builtins.readFile ./.password.hash;
 in {
   nix.settings.trusted-users = [ "v" "root" ];
