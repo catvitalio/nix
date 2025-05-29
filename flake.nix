@@ -39,6 +39,7 @@
           })
           ./machines/sid
         ];
+        specialArgs = { password = builtins.readFile ./.password.hash; };
       };
     };
 }

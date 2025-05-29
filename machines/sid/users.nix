@@ -1,7 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, password, ... }:
 
-let password = builtins.readFile ./.password.hash;
-in {
+{
   nix.settings.trusted-users = [ "v" "root" ];
 
   users.users = {
